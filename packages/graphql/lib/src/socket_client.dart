@@ -250,8 +250,7 @@ class SocketClient {
               .startWith(
                   waitForConnection ? null : SocketConnectionState.CONNECTED)
               .where((SocketConnectionState state) =>
-                  state == SocketConnectionState.CONNECTED)
-              .take(1);
+                  state == SocketConnectionState.CONNECTED);
 
       final Observable<SocketConnectionState> waitForConnectedState = addTimeout
           ? waitForConnectedStateWithoutTimeout.timeout(
