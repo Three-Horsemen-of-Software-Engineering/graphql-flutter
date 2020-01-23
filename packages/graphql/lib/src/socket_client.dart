@@ -113,7 +113,7 @@ class SocketClient {
             print(
                 "Haven't received keep alive message for ${config.inactivityTimeout.inSeconds} seconds. Disconnecting..");
             event.close();
-            _socket.close(WebSocketStatus.goingAway);
+            _socket.close(identical(0, 0.0) ? WebSocketStatus.normalClosure : WebSocketStatus.goingAway);
             _connectionStateController.value =
                 SocketConnectionState.NOT_CONNECTED;
           },
